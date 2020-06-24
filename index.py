@@ -1,5 +1,7 @@
 from tkinter import ttk
 from tkinter import *
+import Ent_rom
+import Rom_ent
 
 class Home:
     def __init__(self,window):
@@ -15,10 +17,21 @@ class Home:
         self.number.focus()
         self.number.grid(row = 1, column = 1)
 
-        ttk.Button(frame, text = 'Convertir').grid(row = 3, column = 1,columnspan = 3,sticky = E)
+        ttk.Button(frame, text = 'Convertir', command = lambda : self.calcular(self.number.get())).grid(row = 3, column = 1,columnspan = 3,sticky = E)
 
         self.message = Label(text = '')
         self.message.grid(row = 4, column = 0,columnspan = 2, sticky = W + E)
+
+    def calcular(self,valor):
+        #self.message['text'] = ''
+        try:
+            valor = int(valor)
+            a = Ent_rom.Enteros(valor)
+            a.conver_Romanos()
+        except:
+            a = Rom_ent.Letras(valor)
+            a.convertir()
+        #print(valor)
 
 
 if __name__ == '__main__':
