@@ -43,8 +43,9 @@ class Enteros:
             ann = ann * 10 #multiplicador  para obtener valores como 10 o 500 etc
 
 
-        print(self.ret)
-        print(self.listnum)
+        #print(self.ret)
+        #print(self.listnum)
+        return self.ret
 
 
 

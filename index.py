@@ -1,5 +1,6 @@
 from tkinter import ttk
 from tkinter import *
+import tkinter.font as tkFont
 import Ent_rom
 import Rom_ent
 
@@ -19,18 +20,26 @@ class Home:
 
         ttk.Button(frame, text = 'Convertir', command = lambda : self.calcular(self.number.get())).grid(row = 3, column = 1,columnspan = 3,sticky = E)
 
-        self.message = Label(text = '')
+        fontstyle = tkFont.Font(family = 'Lucida Grande', size = 25)
+        self.message = Label(text = 'El resultado es: ',font = fontstyle)
         self.message.grid(row = 4, column = 0,columnspan = 2, sticky = W + E)
+        
 
     def calcular(self,valor):
         #self.message['text'] = ''
         try:
             valor = int(valor)
             a = Ent_rom.Enteros(valor)
-            a.conver_Romanos()
+            res = a.conver_Romanos()
+            self.message['text'] = 'El resultado es: {}'.format(res)
         except:
             a = Rom_ent.Letras(valor)
-            a.convertir()
+            res = a.convertir()
+            try:
+                res = int(res)
+                self.message['text'] = 'El resultado es: {}'.format(str(res))
+            except:
+                self.message['text'] = '{}'.format(res)
         #print(valor)
 
 

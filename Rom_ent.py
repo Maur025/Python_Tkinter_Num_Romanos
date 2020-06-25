@@ -9,26 +9,27 @@ class Letras:
         resto = 0
         rec = self.word
         val_ant = 0
+        dev = ''
 
         #print(rec.find('V'))
 
         if rec.startswith('V') and (rec.find('X') > 0 or rec.find('L') > 0 or rec.find('C') > 0 or rec.find('D') > 0 or rec.find('M') > 0):
-            print('El numero que ingresaste tiene un error, vuelve a intentarlo')
+            dev = 'El numero que ingresaste tiene un error, vuelve a intentarlo'
         else:
             if rec.startswith('L') and (rec.find('C') > 0 or rec.find('D') > 0 or rec.find('M') > 0):
-                print('El numero que ingresaste tiene un error, vuelve a intentarlo')
+                dev = 'El numero que ingresaste tiene un error, vuelve a intentarlo'
             else:
                 if rec.startswith('D') and rec.find('M') > 0:
-                    print('El numero que ingresaste tiene un error, vuelve a intentarlo')
+                    dev = 'El numero que ingresaste tiene un error, vuelve a intentarlo'
                 else:
                     if rec.startswith('I') and rec.count('I') >= 1 and ( rec.find('V')> 1 or rec.find('X') > 1 or rec.find('C') > 0 or rec.find('L')> 0 or rec.find('D') > 0 or rec.find('M') > 0 ):
-                        print("El numero que ingresaste tiene un error, vuelve a intentarlo")
+                        dev = "El numero que ingresaste tiene un error, vuelve a intentarlo"
                     else:
                         if rec.startswith('X') and rec.count('X') >= 1 and (rec.find('C') > 1 or rec.find('L')> 1 or rec.find('D') > 0 or rec.find('M') > 0 ):
-                            print("El numero que ingresaste tiene un error, vuelve a intentarlo")
+                            dev ="El numero que ingresaste tiene un error, vuelve a intentarlo"
                         else:
                             if rec.count('V') > 1 or rec.count('D') > 1 or rec.count('L') > 1 or rec.count('I') > 3 or rec.count('C')> 3 or rec.count('X') > 3 or rec.count("M") > 3:
-                                print("El numero que ingresaste tiene un error, vuelve a intentarlo")
+                                dev = "El numero que ingresaste tiene un error, vuelve a intentarlo"
                             else:
                                 for i in reversed(range(0,len(rec))):
                                     resul1= self.convertir_dicc(rec[i])
@@ -41,12 +42,13 @@ class Letras:
                                         #print('sumo')
 
                                     val_ant = resul1
-                                    print(resto)
-                                print(resto)
+                                    #print(resto)
+                                dev = resto
 
                                 # xcix = 99
                                 # x = 10 - 0
                                 # c = 100 - 10
+        return dev
 
 
     def convertir_dicc(self,pal1):
